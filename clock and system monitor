@@ -1,0 +1,43 @@
+use_xft yes
+xftfont 123:size=9
+xftalpha 0.1
+update_interval 1
+total_run_times 0
+
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_colour 000000
+own_window_argb_visual yes
+own_window_argb_value 0
+
+double_buffer yes
+minimum_size 1500 150
+maximum_width 1870
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color white
+default_shade_color red
+default_outline_color green
+alignment bottom_left
+gap_x -1260
+gap_y 1650
+no_buffers yes
+uppercase no
+cpu_avg_samples 4
+net_avg_samples 1
+override_utf8_locale yes
+use_spacer yes
+
+TEXT
+${voffset 5}${color 697986}${font Cantarell Light:pixelsize=120}${time %H}
+${voffset -170}${offset 130}${font Cantarell Thin:size=64}${time %M}${font}${voffset -50}${offset 60}${font Cantarell:pixelsize=42}${time %d} ${voffset -15}${color 697986}${font Ubuntu:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 15}${font Ubuntu:pixelsize=58}${offset -245}${time %A}${font} 
+
+${offset 30}${color 27AE60}HOME ${offset 7}$color${fs_used /} / ${fs_size /} ${offset 7}${color 3f7eac}${fs_bar 10,60 /}
+${offset 30}${color 27AE60}RAM ${offset 7}$color$mem / $memmax ${offset 7}${color d65219}${membar 10,60 }
+${offset 30}${color 27AE60}CPU ${offset 7}$color${cpu cpu0}% / ${execi 30 sensors | grep 'Core 0:' | cut -c16-18}°C ${offset 7}${color 990000}${cpubar 10,60}
+${offset 30}${color 27AE60}Kernel ${offset 7}$color$kernel${offset 30}${color 27AE60}
+${offset 30}${color 27AE60}Public IP ${offset 7}$color${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]|.]//g'}${offset 30} ${offset 7}
